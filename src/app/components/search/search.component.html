@@ -1,0 +1,64 @@
+<div class="row padding-20">
+    <div class="col-sm-12 align">
+        <form #userTable="ngForm" (ngSubmit)="filterUsersTable(userTable.form.value)">
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label for="title">{{'DATA_TABLE_TITLE_LABEL' | translate}}</label>
+                    <input type="text" name="title" id="userTitle" [placeholder]="'DATA_TABLE_TITLE_PLACEHOLDER' | translate" class="form-control" [(ngModel)]="user.title" #userTitle="ngModel"
+                        [required]="!userTitle.control.value && !userTitle.control.value && !userKeywords.control.value && !userModule.control.value && !userPublishDate.control.value && !userAcceptedDate.control.value && !userGrade.control.value && !userTeacher.control.value"
+                    />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="keywords">{{'DATA_TABLE_KEYWORD_LABEL'| translate}}</label>
+                    <input type="text" id="keywords" name="keywords" class="form-control" [placeholder]="'DATA_TABLE_KEYWORD_PLACEHOLDER' | translate" [(ngModel)]="user.keywords"
+                        #userKeywords="ngModel" [required]="!userTitle.control.value && !userTitle.control.value && !userKeywords.control.value && !userModule.control.value && !userPublishDate.control.value && !userAcceptedDate.control.value && !userGrade.control.value && !userTeacher.control.value"
+                    />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="module">{{'DATA_TABLE_MODULE_LABEL'| translate}}</label>
+                    <input type="text" name="module" id="module" class="form-control" placeholder="{{'DATA_TABLE_MODULE_PLACEHOLDER'| translate}}" [(ngModel)]="user.module" #userModule="ngModel"
+                        [required]="!userTitle.control.value && !userTitle.control.value && !userKeywords.control.value && !userModule.control.value && !userPublishDate.control.value && !userAcceptedDate.control.value && !userGrade.control.value && !userTeacher.control.value"
+                    />
+                </div>
+            <!-- </div>
+            <div class="row"> -->
+                <div class="form-group col-sm-4">
+                    <label for="publishDate">{{'DATA_TABLE_PUBLISED_LABEL'| translate}}</label>
+                    <input type="date" id="publishDate" name="publishDate" class="form-control" [(ngModel)]="user.publishDate" [placeholder]="'DATA_TABLE_PUBLISED_PLACEHOLDER'| translate"
+                        #userPublishDate="ngModel" [required]="!userTitle.control.value && !userTitle.control.value && !userKeywords.control.value && !userModule.control.value && !userPublishDate.control.value && !userAcceptedDate.control.value && !userGrade.control.value && !userTeacher.control.value"
+                    />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="acceptedDate">{{'DATA_TABLE_ACCEPTED_LABEL'| translate}}</label>
+                    <input type="date" id="acceptedDate" name="acceptedDate" class="form-control" [(ngModel)]="user.acceptedDate" [placeholder]="'DATA_TABLE_ACCEPTED_PLACEHOLDER'| translate"
+                        #userAcceptedDate="ngModel" [required]="!userTitle.control.value && !userTitle.control.value && !userKeywords.control.value && !userModule.control.value && !userPublishDate.control.value && !userAcceptedDate.control.value && !userGrade.control.value && !userTeacher.control.value"
+                    />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="grade">{{'DATA_TABLE_ACCEPTED_LABEL'| translate}}</label>
+                    <select class="form-control" id="grade" name="grade" class="form-control" [(ngModel)]="user.grade" #userGrade="ngModel" [required]="!userTitle.control.value && !userTitle.control.value && !userKeywords.control.value && !userModule.control.value && !userPublishDate.control.value && !userAcceptedDate.control.value && !userGrade.control.value && !userTeacher.control.value">
+                            <option value="undefined">{{'DATA_TABLE_GRADE_PLACEHOLDER' | translate}}</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                    </select>
+                </div>
+                <div class="form-group  col-sm-4">
+                    <label for="teacher">{{'DATA_TABLE_TEACHER_LABEL' | translate}}</label>
+                    <input type="text" id="teacher" name="teacher" [placeholder]="'DATA_TABLE_TEACHER_PLACEHOLDER'| translate" class="form-control" [(ngModel)]="user.teacher"
+                    #userTeacher="ngModel" [required]="!userTitle.control.value && !userTitle.control.value && !userKeywords.control.value && !userModule.control.value && !userPublishDate.control.value && !userAcceptedDate.control.value && !userGrade.control.value && !userTeacher.control.value" />
+                </div>
+                <div class="form-group col-sm-4 mt-auto">
+                    <button class="btn btn-success  col-sm-12" [disabled]="userTable.form.invalid">
+                        <i class="fa fa-search mr-2" aria-hidden="true"></i>{{'FILTER_SEARCH_BUTTON' | translate}}</button>
+                </div>
+                <div class="form-group col-sm-4 mt-auto">
+                        <button type="button" class="btn btn-success  col-sm-12" (click)="resetForm(userTable.form)">
+                            <i class="fa fa-search mr-2" aria-hidden="true"></i>{{'FILTER_RESET_BUTTON' | translate}}</button>
+                    </div>
+            </div>
+        </form>
+    </div>
+</div>

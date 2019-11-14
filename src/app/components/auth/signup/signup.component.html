@@ -1,0 +1,40 @@
+<div class="col-sm-5 alignForm">
+  <h2>{{'SIGNUP_HEADER' | translate}}</h2>
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active">
+      <br>
+      <form #signUpForm="ngForm" (ngSubmit)="signUpHandler(signUpForm)" autocomplete="false">
+        <div class="form-group">
+          <label for="preName">{{SIGNUP_PRENAME_LABEL | translate}}</label>
+          <input type="text" class="form-control" id="preName" [placeholder]="'SIGNUP_PRENAME_PLACEHOLDER' | translate" name="preName" [(ngModel)]="user.preName"
+            required="true">
+        </div>
+        <div class="form-group">
+          <label for="name">{{'SIGNUP_NAME_LABEL'| translate}}</label>
+          <input type="text" class="form-control" id="name" [placeholder]="'SIGNUP_NAME_PLACEHOLDER' | translate" name="userName" [(ngModel)]="user.name" required="true">
+        </div>
+        <div class="form-group">
+          <label for="email">{{'SIGNUP_EMAIL_LABEL'| translate}}</label>
+          <input type="email" class="form-control" id="email" [placeholder]="'SIGNUP_EMAIL_PLACEHOLDER'| translate" name="userEmail" [(ngModel)]="user.email"
+            required="true">
+        </div>
+        <div class="form-group">
+          <label for="score">{{'SIGNUP_SCORE_LABEL' | translate}}</label>
+          <input type="number" class="form-control" id="score" [placeholder]="'SIGNUP_SCORE_PLACEHOLDER' | translate" name="userScore" [(ngModel)]="user.score"
+            required="true">
+        </div>
+        <div class="form-group">
+          <label for="pwd">{{'SIGNUP_PASSWORD_LABEL' | translate}}</label>
+          <input type="password" class="form-control" id="pwd" [placeholder]="'SIGNUP_PASSWORD_PLACEHOLDER' | translate" name="userPassword" [(ngModel)]="user.password"
+            required="true">
+        </div>
+        <!-- <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox"> Remember me
+      </label>
+    </div> -->
+        <button class="btn btn-success col-sm-12" [disabled]="signUpForm.form.invalid">{{'SIGNUP_BUTTON_LABEL' | translate}}</button>
+      </form>
+    </div>
+  </div>
+</div>

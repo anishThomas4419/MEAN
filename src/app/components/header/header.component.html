@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">{{'APPLICATION_NAME' | translate}}</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav text-right ml-auto">
+    <li class="nav-item" *ngIf="!userAuthenticated">
+      <a class="nav-link"  routerLink="/login">
+        <i class="fa fa-sign-in mr-2"></i>{{'HEADER_LOGIN_LINK' | translate}}
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="!userAuthenticated">
+      <a class="nav-link"  routerLink="/signUp">
+        <i class="fa fa-sign-address-book mr-2">{{'HEADER_REGISTER_LINK' | translate}}</i>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf="userAuthenticated">
+        <a class="nav-link"  routerLink="./statistics">
+          <i class="fa fa-bar-chart-o mr-2"></i>{{ 'HEADER_STATISTICS_LINK' | translate}}
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="userAuthenticated">
+          <a class="nav-link"  routerLink="/home">
+            <i class="fa fa-table mr-2"></i>{{'HEADER_DATA_VIEW_LINK' | translate}}
+          </a>
+        </li>
+    <select class="nav-dropdown" (change)="toggleLanguage($event)">
+        <option value="en_US">{{'HEADER_LANGUAGE_ENGLISH' | translate}}</option>
+        <option value="de">{{'HEADER_LANGUAGE_GERMAN' | translate}}</option>
+      </select>
+    <li class="nav-item" *ngIf="userAuthenticated">
+      <button class="btn btn-danger" (click)="onLogOut()">
+        <i class="fa fa-sign-out mr-2"></i>{{'HEADER_LOGOUT_LINK' | translate}}</button>
+    </li>
+  </ul>
+</nav>

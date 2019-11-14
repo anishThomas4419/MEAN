@@ -1,0 +1,25 @@
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+
+table {
+    background: #fff;
+}
+
+.font-20 {
+    font-size: 20px;
+}
+
+.modal-body {
+    max-height: 540px;
+    overflow: auto;
+    label {
+        color: #BCC0DC;
+        font-weight: bold;
+    }
+}

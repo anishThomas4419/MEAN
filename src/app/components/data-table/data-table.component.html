@@ -1,0 +1,113 @@
+<div class="autoMargin">
+  <button class="btn btn-success float-right ml-2 font-20" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>{{'DATA_TABLE_ADD_BUTTON' | translate}}</button>
+  <button class="btn btn-success float-right mr-2 font-20" data-toggle="collapse" data-target="#demo" #filterButton><i class="fa fa-filter mr-2" aria-hidden="true"></i>{{'DATA_TABLE_FILTER_BUTTON' | translate}}</button>
+  <div id="demo" class="collapse">
+    <app-search (resetEmitter)="resetDataTable()"></app-search>
+  </div>
+  <div class="" id="myModal" [ngClass]="userDataModal? 'modal show': 'modal'">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <!-- <h4 class="modal-title">Modal Heading</h4> -->
+          <button type="button" class="close" data-dismiss="modal" (click)="hideUserModal()" #closeButton>&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form (ngSubmit)="saveUserData(userTable)" #userTable="ngForm">
+            <div class="form-group">
+              <label for="title">{{'DATA_TABLE_TITLE_LABEL' | translate}}</label>
+              <input type="text" name="title" [placeholder]="'DATA_TABLE_TITLE_PLACEHOLDER' | translate" id="title" class="form-control" [(ngModel)]="user.title" required="true" />
+            </div>
+            <div class="form-group">
+              <label for="Keywords">{{'DATA_KEYWORD_TITLE_LABEL' | translate}}</label>
+              <input type="text" id="Keywords" name="keywords" [placeholder]="'DATA_TABLE_KEYWORD_PLACEHOLDER' | translate" class="form-control" [(ngModel)]="user.keywords" required="true" />
+            </div>
+            <div class="form-group">
+              <label for="module">{{'DATA_TABLE_MODULE_LABEL' | translate}}</label>
+              <input type="text" name="module" id="module" [placeholder]="'DATA_TABLE_MODULE_PLACEHOLDER' | translate" class="form-control" [(ngModel)]="user.module" required="true" />
+            </div>
+            <div class="form-group">
+              <label for="publishDate">{{'DATA_TABLE_PUBLISED_LABEL' | translate}}</label>
+              <input type="date" id="publishDate" name="publishDate" placeholder="'DATA_TABLE_PUBLISED_PLACEHOLDER' | translate" class="form-control" [(ngModel)]="user.publishDate" required="true" />
+            </div>
+            <div class="form-group">
+              <label for="acceptedDate">{{'DATA_TABLE_ACCEPTED_LABEL' | translate}}</label>
+              <input type="date" id="acceptedDate" name="acceptedDate" placeholder="'DATA_TABLE_ACCEPTED_PLACEHOLDER' | translate" class="form-control" [(ngModel)]="user.acceptedDate" required="true" />
+            </div>
+            <div class="form-group">
+              <label for="grade">{{'DATA_TABLE_GRADE_LABEL' | translate}}</label>
+              <!-- <input type="number" id="score" name="score" placeholder="Enter pre name" class="form-control" [(ngModel)]="user.score" required="true" /> -->
+              <select class="form-control"  id="grade" name="grade" class="form-control" [(ngModel)]="user.grade" required="true" >
+                <option value="undefined">{{'DATA_TABLE_GRADE_PLACEHOLDER' | translate}}</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="teacher">{{'DATA_TABLE_TEACHER_LABEL' | translate}}</label>
+              <input type="text" id="teacher" name="teacher" [placeholder]="'DATA_TABLE_TEACHER_PLACEHOLDER' | translate" class="form-control" [(ngModel)]="user.teacher" required="true" />
+            </div>
+            <div class="custom-file mb-3">
+              <input type="file" class="custom-file-input" id="customFile" (change)="onFileUploadHandler($event)">
+              <label class="custom-file-label" for="customFile">{{'DATA_TABLE_FILE_LABEL' | translate}}</label>
+            </div>
+            <button class="btn btn-success" [disabled]="userTable.form.invalid">{{'DATA_TABLE_SAVE_BUTTON' | translate}}</button>
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover table-striped text-center">
+    <thead>
+      <tr class="text-center">
+        <th>{{'TABLE_HEADER_ID' | translate}}</th>
+        <th>{{'TABLE_HEADER_TITLE' | translate}}</th>
+        <th>{{'TABLE_HEADER_KEYWORD' | translate}}</th>
+        <th>{{'TABLE_HEADER_MODULE' | translate}}</th>
+        <th>{{'TABLE_HEADER_PUBLISH' | translate}}</th>
+        <th>{{'TABLE_HEADER_ACCEPT' | translate}}</th>
+        <th>{{'TABLE_HEADER_GRADE' | translate}}</th>
+        <th>{{'TABLE_HEADER_TEACHER' | translate}}</th>
+        <th colspan="3">{{'TABLE_HEADER_ACTION'| translate}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="userData.length === 0">
+        <td colspan="6">{{'TABLE_ROW_NO_DATA' | translate}}</td>
+      </tr>
+
+      <tr *ngFor="let data of userData">
+        <td>{{data.id}}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.keywords.join(',')}}</td>
+        <td>{{data.module}}</td>
+        <td>{{data.publishedDate | date: 'dd/MM/yyyy'}}</td>
+        <td>{{data.acceptedDate | date: 'dd/MM/yyyy'}}</td>
+        <td>{{data.grade}}</td>
+        <td>{{data.teacher}}</td>
+        <td>
+          <div class="text-info font-20" (click)="editUserData(data)">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </div>
+        </td>
+        <td>
+          <div class="text-danger font-20" (click)="deleteUserData(data)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

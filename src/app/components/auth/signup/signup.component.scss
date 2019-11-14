@@ -1,0 +1,58 @@
+// .alignForm{
+//     color:#BCC0DC;
+//     input {
+//         background: #5F637E;
+//         border-radius: 20px;
+//     }
+//     .active {
+//         color: #AFB2CD !important;
+//     }
+
+//     button {
+//         border-radius: 20px;
+//     }
+// }
+.alignForm{
+    margin: 0;
+    // background: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    color:#BCC0DC;
+    input {
+        background: #5F637E;
+        border-radius: 20px;
+        &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #FFF !important;
+            opacity: 0.5 !important; /* Firefox */
+          } 
+    }
+    .nav-tabs {
+        margin-bottom: 40px;
+        font-size: 20px;
+        .nav-item {
+            width: 50%;
+        }
+    }
+    h2 {
+        // color:#BCC0DC !important;
+        background: none !important;
+        color:#FFF !important;
+        // :hover {
+        //     border-color: #575C7A;
+        // }
+    }
+    .registerText {
+        margin: 20px;
+    }
+    .active {
+        color:#FFF !important;
+        // border-bottom: 1px solid #2D3865 !important;
+    }
+    button {
+        border-radius: 20px;
+    }
+}
+
